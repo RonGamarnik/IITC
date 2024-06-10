@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+<script>
+    let num1, num2, num3, num4, num5;
+    let sum;
+
+    while (isNaN(num1) || isNaN(num2) || isNaN(num3) || isNaN(num4) || isNaN(num5)) {
+        num1 = parseFloat(prompt("Please enter a number: "));
+        num2 = parseFloat(prompt("Please enter a number: "));
+        num3 = parseFloat(prompt("Please enter a number: "));
+        num4 = parseFloat(prompt("Please enter a number: "));
+        num5 = parseFloat(prompt("Please enter a number: "));
+
+        sum = num1 + num2 + num3 + num4 + num5;
+        consle.log("The numbers are",num1,num2,num3,num4,num5)
+        console.log("Sum:", sum);
+        console.log("Average:", sum / 5);
+    }
+</script>
+
+    </body>
+</html>

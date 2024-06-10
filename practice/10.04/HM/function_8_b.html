@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        const numbers = []
+              function sum() {
+                let num = parseInt(prompt("Please enter a number."))
+                while(true){
+                    let rest =num%10;
+                     numbers.push(rest);
+                      num = Math.floor(num/=10);
+                       if(num<10){ 
+                        rest = num % 10;
+                         numbers.push(parseInt(rest));
+                          break } }
+
+                    let sumi = 0;
+                    for (let i = 0;i<numbers.length;i++) {
+                      sumi += numbers[i];
+                  }
+                  return sumi}
+
+                  console.log(sum())
+    </script>
+  </body>
+</html>

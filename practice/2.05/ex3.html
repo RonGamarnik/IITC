@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="loadFromLocalStorage()">
+    <p id="display"></p>
+    <button onclick="conterAdd()">Click me</button>
+    <button onclick="resetLocalStorage()">Reset</button>
+    <script>
+        let counter =localStorage.getItem("counter") ;
+        counter = [0,1,2,3,4,5]
+        function conterAdd(){
+            for (let i = 0 ;i<counter.length ;i++){
+                counter[i] =counter[i]+ 1;
+            
+            document.getElementById("display").innerHTML ="The count is " +counter;
+            localStorage.setItem("counter", counter);
+        }}
+        function loadFromLocalStorage(){
+            document.getElementById("display").innerHTML = "The count is " +localStorage.getItem("counter");
+        }
+        function resetLocalStorage(){
+            localStorage.removeItem("counter");
+            
+        }
+    </script>
+</body>
+</html>

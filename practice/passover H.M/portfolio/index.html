@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="socialMediaButton.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Days+One&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <ul class="nav">
+        <li><a href="#aboutMe">ABOUT ME</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#contact">CONTACT ME</a></li>
+      </ul>
+    </div>
+    <div class="main">
+      <div class="firstParagraph">
+        <img src="images\rob.jpeg" alt="Rob's picture" />
+        <h1>Hi! I'm Rob! I teach people how to code and make websites.</h1>
+      </div>
+      <div id="aboutMe" class="aboutMe">
+        <h2><a></a>About Me</h2>
+        <div class="content">
+          <div class="image">
+            <img src="images/rob-aboutme.jpeg" alt="Rob's second picture" />
+          </div>
+          <div class="paragraph">
+            <p>
+              Almost a decade ago I was busy teaching math to teenagers at three
+              schools in London and Cambridge. Since I’m a bit of a coding geek,
+              I also built websites on the side for friends and family. I soon
+              learned that web development was a very lucrative career choice,
+              so I gave up my successful (and sometimes stressful) job as a
+              teacher to build websites. Today, I couldn’t be happier with that
+              decision.
+            </p>
+            <p>
+              After building websites for about seven years, I noticed a lot of
+              people struggling to learn how to code. I wanted others to have
+              the same freedoms that I enjoyed, so I started teaching web
+              development.
+            </p>
+            <p>
+              I'm familiar with HTML5, CSS3, JavaScript, PHP7 and MySQL.
+              Checkout some of the projects I've done below.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="projectsContainer">
+          <div class="firstProject">
+            <div class="text">
+              <h2>Earth facts</h2>
+              <p>A HTML project about some facts about the earth.</p>
+              <a
+                class="button"
+                href="https://completewebdevelopercourse.com/coursecontent3/1-html/htmlproject.html"
+                >View Project</a
+              >
+            </div>
+          </div>
+          <div class="secondProject">
+            <div class="text">
+              <h2>BBC News Clone</h2>
+              <p>
+                This project is a clone of the BBC news website from the Web Dev
+                2.0 Course.
+              </p>
+              <a
+                class="button"
+                href="https://eco-cdn.co.uk/webdeveloper2.0/content/2-css/bbc.html"
+              >
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Use this form to get in touch. I would love to hear from you!</p>
+        <form class="contactForm">
+          <div class="contactDetals">
+            <label for="name">name</label>
+            <input type="text" id="name" placeholder="Your name" />
+            <label for="subject">subject</label>
+            <input
+              type="text"
+              id="subject"
+              placeholder="The reason for your messeage"
+            />
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Your email address" />
+          </div>
+          <div class="message">
+            <label for="msg">Message</label>
+            <textarea id="msg" rows="15"></textarea>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>This site © 2022 Rob Percival</p>
+      <div class="socialMedia">
+        <button
+          class="facebook"
+          href="https://www.facebook.com/rpcodestars"
+        ></button>
+        <button class="twitter" href="https://twitter.com/techedrob"></button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    function play() {
+        let result = Math.floor(Math.random() * 100);
+        let counter = 0;
+        while (true) {
+            let guess = parseInt(prompt("Place your guess"));
+            counter++;
+            if (guess > result)
+                alert("Your guess is above the result!");
+            else if (guess < result)
+                alert("Your guess is lesser than the result!");
+            else if (result === guess) {
+                break;
+            }
+        }
+        return counter;
+    }
+
+        let startTime = performance.now(); 
+        let attempts = play(); 
+        let endTime = performance.now(); 
+        let elapsedTime = endTime - startTime;
+    alert("You won. It took " + attempts + " attempts. Time elapsed: " + elapsedTime + " milliseconds.");
+</script>
+
+</body>
+</html>

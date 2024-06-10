@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bulls and Cows</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="numButtons.css" />
+    <link rel="stylesheet" href="inputstyle.css" />
+    <link rel="stylesheet" href="subnitBtn.css" />
+  </head>
+  <body onload="generateComputerBoard()">
+    <div class="textWrapper">
+      <h1>Bulls and Cows</h1>
+      <p>
+        Discover the hidden code! Click, or use arrow keys, to change your guess
+        in each box. (Bulls and Cows is similar to, but came before, the board
+        game MastermindTM*) <br />
+        Bulls = correct code, correct position.(green) <br />
+        Cows = correct code, wrong position.(blue)
+      </p>
+    </div>
+    <div class="downWrapper">
+      <div id="rows">
+        <div id="row">
+          <div id="left">
+            <div class="question">?</div>
+            <div class="question">?</div>
+            <div class="question">?</div>
+            <div class="question">?</div>
+            <!-- <button id="newGame" onclick="generateComputerBoard()">New Game</button> -->
+          </div>
+
+          <div id="right">
+            <div class="bull">Bulls</div>
+            <div class="cow">Cows</div>
+          </div>
+        </div>
+        <div id="row">
+          <div id="inp-border a1">
+            <input class="input"  id ="display" readonly>
+            <input class="input" id="display2" readonly />
+            <input class="input"  id="display3" readonly />
+            <input class="input"  id="display4" readonly />
+
+          
+            
+          </div>
+        </div>
+      </div>
+      <div id="keybd">
+        <div class="numbers">
+          <button class="key" onclick="appendToDisplay(0)">0</button>
+          <button class="key" onclick="appendToDisplay(1)">1</button>
+          <button class="key" onclick="appendToDisplay(2)">2</button>
+          <button class="key" onclick="appendToDisplay(3)">3</button>
+          <button class="key" onclick="appendToDisplay(4)">4</button>
+          <button class="key" onclick="appendToDisplay(5)">5</button>
+          <button class="key" onclick="appendToDisplay(6)">6</button>
+          <button class="key" onclick="appendToDisplay(7)">7</button>
+          <button class="key" onclick="appendToDisplay(8)">8</button>
+          <button class="key" onclick="appendToDisplay(9)">9</button>
+          
+          
+
+          
+          
+        </div>
+        <button class="c-button" onclick="checkBoard()">
+          <span class="c-main">
+          <span class="c-ico">
+            <span class="c-blur"></span> <span class="ico-text">+</span>
+          </span>Submit</span>
+        </button>
+      </div>
+    <div class="historyshow">
+      <h2>Bulls and Cows History</h2>
+<table id="historyTable">
+  <thead>
+    <tr>
+      <th>Guess 1</th>
+      <th>Guess 2</th>
+      <th>Guess 3</th>
+      <th>Guess 4</th>
+    </tr>
+  </thead>
+  <tbody id="historyBody">
+    <!-- Table rows will be dynamically generated here -->
+  </tbody>
+</table>
+
+    </div>
+ 
+    
+    <script src="bulls&cows.js"></script>
+  </body>
+</html>

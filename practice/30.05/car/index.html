@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driving Car Animation</title>
+    <link rel="stylesheet" type="text/css" href="/30.05/car/style.css" />
+  </head>
+  <body>
+    <div class="road">
+      <div class="car"></div>
+    </div>
+    <div class="carState">
+      <p>car state is:</p>
+      <p class="onOrOf"></p>
+      <p>fuel level is:</p>
+      <p class="fuelDisplay"></p>
+      <button>switch</button>
+      <div class="refuel">
+        <p>refuel</p>
+        <input
+          type="number"
+          class="refuelInput"
+          placeholder="enter your amount in liters"
+        />
+        <p class="currentFueling">0</p>
+        <button class="refuelBtn">refuel</button>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

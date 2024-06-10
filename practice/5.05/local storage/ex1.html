@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="save()" >save</button>
+    <button onclick="read()">read</button>
+    <script>
+        const book = {"name":"titanic","pages":120 }
+        function save(){
+            // localStorage.setItem("book", book.name);
+            // localStorage.setItem("pages",book.pages);
+            let str = JSON.stringify(book);
+            localStorage.setItem("book", str);
+        }
+        function read(){
+            // let showBookName = localStorage.getItem("book",);
+            // let showPages = localStorage.getItem("pages",);
+            // alert(`book name is:${showBookName} and pages is:${showPages}`);
+            let str = localStorage.getItem("book");
+            let obj = JSON.parse(str);
+            alert(`book name is:${obj.name} and pages is:${obj.pages}`);
+        }
+    </script>
+</body>
+</html>

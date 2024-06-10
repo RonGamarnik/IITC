@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getBook(bookname,bookArray) {
+            let i;
+            for (i=0;i<bookArray.length;i++) {
+                if (bookArray[i] === bookname) {
+                    return bookArray[i];
+                }
+                else if (i === bookArray.length) {
+                    return "Book not found";
+                }
+            }
+        }
+        console.log(getBook("book2",["book1","book2","book3","book4"]))
+            
+    </script>
+</body>
+</html>

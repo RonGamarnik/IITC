@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/loginPageStyle.css" />
+    <link rel="stylesheet" href="/css/loginPageButtonsStyle.css" />
+    <title>Financial Management</title>
+  </head>
+  <body>
+    <div class="loginCard">
+      <form onsubmit="return login();">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" name="userName" />
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+        <button type="submit" onclick="return login()" class="ui-btn">
+          Login
+        </button>
+        <button type="submit" onclick="register()" class="ui-btn">
+          Register
+        </button>
+      </form>
+    </div>
+    <script src="/js/loginPageFlow.js"></script>
+  </body>
+</html>

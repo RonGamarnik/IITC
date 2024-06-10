@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>H.M assignment</h1>
+    <input type="text" id="search" />
+    <button type="button" onclick="search()">Search</button>
+    <script>
+      const numbers = [1, 2, 3, 4]
+
+      function search() {
+        const searchTerm = parseInt(document.getElementById('search').value)
+        let found = false
+
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] === searchTerm) {
+            numbers[i] += 1
+            found = true
+            break 
+          }
+        }
+
+        if (!found) {
+          alert('Invalid search')
+        }
+
+        console.log(numbers)
+      }
+    </script>
+  </body>
+</html>

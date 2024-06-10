@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload 500 Users and Books</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+      const urlUsers = 'http://localhost:8001/users'
+      const urlBooks = 'http://localhost:8001/books'
+
+      async function postUser() {
+        try {
+          await axios.post(urlUsers, {
+            firstName: 'John',
+            lastName: 'Doe'
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
+      async function postBook() {
+        try {
+          await axios.post(urlBooks, {
+            name: 'The Catcher in the Rye',
+            author: 'J.K. Rowling',
+            numPages: 500
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
+      async function uploadData() {
+        for (let i = 0; i < 500; i++) {
+          await postUser()
+          await postBook()
+          console.log(`Uploaded user and book ${i + 1}`)
+        }
+        console.log('Upload complete')
+      }
+
+      uploadData()
+    </script>
+  </body>
+</html>

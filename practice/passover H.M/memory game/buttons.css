@@ -1,0 +1,74 @@
+
+.card{
+    width: 100px;
+    height: 150px;
+perspective: 1000px;
+    border-radius: 25%;
+color:blue;
+background-color: blue;
+margin:1em;
+max-width: 7em;
+cursor: pointer;
+text-align: center;
+padding: 1em;
+max-height: 6em;
+overflow: visible;
+position: relative;
+}
+.card:hover{
+    background-color: coral;
+    color:coral;
+    
+}
+.correct{
+    background-color: #04AA6D;;
+    color: white;
+    
+  
+
+}
+
+.card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+        border-radius: 25px;
+    justify-self: center;
+    box-shadow: 7px 2px 4px rgba(0, 0, 0, 0.3);
+    object-fit: cover; /* Adjust based on image aspect ratio */
+    transition: opacity 0.5s ease; /* Opacity transition effect */
+
+    transition: transform 0.5s, z-index 0s 0.25s; /* Add transition for transform and delayed z-index change */
+    backface-visibility: hidden;
+}
+
+.card .card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.card .card-inner .card-front,
+.card .card-inner .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.card .card-inner .card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.card .card-inner .card-back {
+    transform: rotateY(180deg);
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+

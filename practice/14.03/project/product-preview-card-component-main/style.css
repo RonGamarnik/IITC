@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+@media only screen and (max-width: 375px) {
+    
+
+    .card{
+        flex-wrap: wrap;
+    }
+  }
+.wrapper{
+    background-color: hsl(30, 38%, 92%);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;}
+
+.card{
+    border-radius: 25px;
+    background-color: white;
+    display:flex;
+    width: 550px;
+    margin: 5%;
+    gap: 2px;
+    overflow: auto;
+}
+.pcard{
+    flex-grow: 2;
+
+}
+.pcard img{
+display: block;
+ max-width: 100%;
+min-height: 100%;
+  
+}
+button{
+display: block;
+padding: 10px;
+width: 200px;
+color: white;
+background-color:  hsl(158, 36%, 37%);
+margin-bottom: 8px;
+margin-left: 25px;
+border-radius: 15px;
+font-family: fraunces;
+
+}
+button:hover{
+    background-color: black;
+}
+.price{
+    display:flex;
+    box-sizing: content-box;
+
+}
+#p1{
+    color:hsl(158, 36%, 37%) ;
+    font-size: xx-large;
+    font-weight: bolder;
+    box-sizing: content-box;
+    font-family: fraunces;
+
+}
+#p2{
+    text-align: center;
+    font-weight: lighter;
+    font-family: fraunces;
+    color: darkgray;
+    margin: auto;
+    box-sizing: content-box;
+     margin-left: 0px;
+     font-size: small;
+}
+.productdis{
+    margin-left: 10px;
+}
+.productdis h1{
+    font-family: fraunces;
+}
+.productdis p{
+    font-family: montserrat;
+    font-weight: lighter;
+}
+.productdis h3{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: small;
+    color: gray;
+    margin-top: 17px;
+}
+    
+
+
+  
+  
+.wrapper{
+    background-color: hsl(30, 38%, 92%);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+.card{
+    border-radius: 25px;
+    background-color: white;
+    display:flex;
+    width: 550px;
+    margin: 10%;
+    gap: 2px;
+    overflow: auto;
+}
+.pcard{
+    flex-grow: 2;
+
+}
+.pcard img{
+display: block;
+ max-width: 100%;
+min-height: 100%;
+  
+}
+button{
+display: block;
+padding: 10px;
+width: 200px;
+color: white;
+background-color:  hsl(158, 36%, 37%);
+margin-bottom: 8px;
+margin-left: 25px;
+border-radius: 15px;
+font-family: fraunces;
+
+}
+button:hover{
+    background-color: black;
+}
+.price{
+    display:flex;
+    box-sizing: content-box;
+
+}
+#p1{
+    color:hsl(158, 36%, 37%) ;
+    font-size: xx-large;
+    font-weight: bolder;
+    box-sizing: content-box;
+    font-family: fraunces;
+
+}
+#p2{
+    text-align: center;
+    font-weight: lighter;
+    font-family: fraunces;
+    color: darkgray;
+    margin: auto;
+    box-sizing: content-box;
+     margin-left: 0px;
+     font-size: small;
+}
+.productdis h1{
+    font-family: fraunces;
+}
+.productdis p{
+    font-family: montserrat;
+    font-weight: lighter;
+}
+.productdis h3{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: small;
+    color: gray;
+    margin-top: 17px;
+}
+    
+

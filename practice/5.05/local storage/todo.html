@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="showTasks()">
+    <div class="container">
+      <h1>Task Manager</h1>
+      <form>
+        <input onkeydown="if(event.keyCode==13) addTask()" type="text" placeholder="Please insert your tasks" class="task-input" />
+        <button type="button" onclick="addTask()" class="btn">Add Task</button>
+        <div class="task-list"></div>
+        <div class="timer"></div>
+      </form>
+    </div>
+
+    <script src="todofunc.js">
+    </script>
+  </body>
+</html>

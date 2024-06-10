@@ -1,0 +1,25 @@
+.main{
+    justify-content: center;
+    align-items: center;
+    background-color: skyblue;
+    padding: 3em;
+}
+.board{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgb(124, 185, 185);
+    border-radius: 25px;
+}
+h2{
+    position: absolute;
+    top: 2px;
+    left:23em;
+    color: aliceblue;
+    
+}

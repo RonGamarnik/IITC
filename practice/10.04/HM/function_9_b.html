@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     const fiboarr = [];
+      function fibo() {
+         let num = parseInt(prompt("Please enter a number"));
+          let a = 0, b = 1, temp;
+           for (let i = 0; i < num; i++) {
+            fiboarr.push(a);
+             temp = a;
+              a = b;
+               b = temp + b;
+             } }
+              fibo();
+            console.log(fiboarr);
+
+    </script>
+</body>
+</html>

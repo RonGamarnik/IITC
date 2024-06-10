@@ -1,0 +1,35 @@
+html{
+    background-color: antiquewhite;
+}
+
+.story1{
+    margin-top: 20em;
+    margin-left: 30em;
+    margin-right: 5em;
+    background-color: red;
+    color: cyan;
+    padding: 2em;
+    border-radius: 25px;
+    
+}
+.story2{
+    background-color: salmon;
+    color: yellow;
+    padding: 2em;
+    border-radius: 25px;
+}
+
+#story1{
+    text-align: center;
+    background-color: red;
+    font-size: 90px;
+    
+}
+#story2 {
+    text-align: center;
+    background-color: bisque;
+    font-size: 90px;
+}
+.hide{
+    display: none;
+}

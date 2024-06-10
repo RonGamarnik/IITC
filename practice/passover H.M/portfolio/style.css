@@ -1,0 +1,279 @@
+*{
+    box-sizing: border-box;
+}
+@media only screen and (max-width: 900px) {
+    .content{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 0px!important;
+        }    
+    .aboutMe img{
+        justify-self: flex-start;
+        max-width: 100%;
+    }
+    .content .paragraph{
+        margin-left: 0!important;
+    }
+    .projectsContainer{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 2em;
+    
+    }
+    .firstProject{
+        margin-bottom: 2em;
+    }
+    form{
+        flex-wrap: wrap;
+        flex-direction: column;
+
+    }
+    form input{
+        width: 350px;
+    }
+    .message textarea{
+        width: 350px;
+    margin-left: 4em;    }
+
+    .message label{
+    margin-left: 3.4em!important;
+}
+    .footer p{
+        margin-right: 15em!important;
+    }
+}
+h1,h2,h3,h4,h5{
+    font-family: "Days One";
+}
+body {
+    background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);
+    font-family: "Work Sans";
+        margin: 0;
+
+}
+.main{
+    margin-top: 0;
+}
+.header {
+    display: flex;
+    background-color: #200e3d;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    unicode-bidi: isolate;
+    position: sticky;
+    top: 0;
+}
+.header ul{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin:20px 0;
+    padding: 0 123.3333px;
+}
+.header li{
+    list-style-type: none;
+    color: #ffffff;
+}
+.header a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+}
+.header a:hover{
+    color: lightblue;
+    cursor: pointer;
+}
+.firstParagraph{
+    display: flex;
+    margin-top: 5em;
+    flex-direction: column;
+    justify-content: center;
+}
+.firstParagraph img{
+    border-radius: 100%;
+    width: 440px;
+    align-self: center;
+}
+.firstParagraph h1{
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0px 100px;
+}
+.aboutMe{
+    max-width: 1100px;
+    height: auto;
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 40px 50px 70px;
+    margin: 0 81.6667px;
+    box-shadow: 10px 10px 0px rgb(0 0 0 / 40%), -10px -10px 0px rgb(255 114 114 / 80%);
+}
+.aboutMe img{
+    width: 400px;
+}
+.content{
+    padding: 5px;
+margin-left: 7em;
+    width: 80%;
+    display: flex;
+
+}
+.content .image{
+    width: fit-content;
+}
+.content .paragraph{
+    margin: 0px 0px 0px 40px;
+}
+.content p{
+    text-align: left;
+    text-wrap: wrap;
+
+}
+.projects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+.projects h2{
+    color:black;
+    margin-top: 0px;
+}
+.firstProject{
+    background-image: url(images/earth.jpg);
+    width: 400px;
+    height: 400px;
+    margin-right: 3em;
+    border-radius: 25px;
+}
+.secondProject{
+    background-image: url(images/bbcnews.jpg);
+    width: 400px;
+    height: 400px;
+    border-radius: 25px;
+}
+.text{
+    position: relative;
+    bottom: 0;
+    height: 65px;
+    width: 100%;
+    left: 0;
+    top: 335px;
+    bottom: 0;
+    z-index: 2;
+    background-color: white;
+    overflow: hidden;
+    transition: 0.2s;
+    padding: 20px;
+    text-align: center;
+}
+.text:hover{
+    top: 250px;
+    height: 170px;
+}
+.text p{
+    color: black;
+}
+.text h2{
+    margin-bottom: 1em;
+}
+.text a{
+    color: blue;
+    text-decoration: none;
+}
+.projectsContainer{
+    display: flex;
+    flex-direction: row;
+}
+.button{
+    border: 5px solid lightblue;
+    border-radius: 10px;
+    width: 160px;
+    margin-bottom: 100px;
+    margin-left: 10px;
+}
+.contact{
+    width: 100%;
+    height: auto;
+    padding: 75px 0 50px 0;
+    text-align: center;
+    background-color: rgba(3, 3, 3, 45%);
+    color: white;
+}
+.contactForm{
+    display: flex;
+    flex-direction: row;
+}
+.contactDetals{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    justify-content: flex-start;
+}
+input {
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+input{
+    padding: 1.5em;
+    border-radius: 15px;
+    width: 40em;
+    margin-left: 3em;
+}
+label{
+    margin-left: 3em;
+    text-align: left;
+}
+.message {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.message input{
+    width: 280px;
+    height:660px;
+}
+.message label{
+    margin-left: 0;
+}
+.message button {
+    color: #1d3d5f;
+    border: 0;
+    border-radius: 5px;
+    background: lightblue;
+    width: 140px;
+    height: 40px;
+    margin-top: 40px;
+    margin-left: auto;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.footer{
+    background-color: black;
+    display: flex;
+    padding: 1em;
+}
+
+.footer p{
+    justify-content: flex-start;
+    margin-right: 51em;
+    color: white;
+}
+.socialMedia{
+    display: flex;
+
+}
+
+

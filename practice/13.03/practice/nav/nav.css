@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --page-padding: 48px;
+}
+.header{
+    border-radius: 50px;
+
+}
+.navi{
+    display:flex;
+    background-color: salmon;
+    align-items: center;
+    gap: 8px;
+    padding-inline: var(--page-padding);
+
+}
+
+.Logo {
+flex-direction: row;
+border-radius: 50px;
+align-items: flex-start;
+padding-inline: var(--page-padding);
+
+    
+}
+.navbar{
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 18px;
+  
+  
+ 
+    
+}
+.navbar button{
+    border-radius: 50px;
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.navbar a{
+ font-style: italic;
+ color: azure;
+ text-decoration: none;
+
+}
+.navbar a:hover{
+    color: black;
+}
+.navbar a:active{
+    color: rgb(236, 9, 9);
+}
+
+
+
+.navi img{
+    border-radius: 25px;
+    height: 10vh;
+}
+
+.box{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap:  wrap;
+
+}
+.card{
+    border: 5px solid black;
+    margin-top: 20px;
+    padding: 10px;
+
+
+}
+.innercard{
+    text-align: center;
+    border: 3px solid purple;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+const liabry = [];
+ let i = 0;
+  function addBook() { 
+    let name = prompt('Add a book name');
+     let pages = prompt('Add the number of pages in the book');
+      pages =parseInt(pages);
+       liabry.push({ "name": name, "pages": pages }); }
+        while (i < 3){
+             addBook(); i++; } 
+             console.log(liabry);
+
+    </script>
+</body>
+</html>

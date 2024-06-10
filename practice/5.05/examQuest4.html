@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function sortArr(arr){
+            let newArr = []
+            newArr[0] = arr[0]
+            for (let i = 0; i < arr.length; i++){
+                for(let j = 0; j < newArr.length; j++){
+                    if (arr[i] >= newArr[j]){
+                        newArr[j] = arr[i]
+                    }
+                    else {
+                        newArr[J-1]=arr[i]
+                        
+                    }
+                }
+            }
+            return newArr
+        }
+        console.log(sortArr([3,5,2,12,2,3]));
+    </script>
+</body>
+</html>

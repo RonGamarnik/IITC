@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="set_item()" class="btn">set</button>
+    <button onclick="get_item()" class="btn">get</button>
+    <button onclick="clear_item()" class="btn">clear</button>
+<script>
+    function set_item(){
+        localStorage.setItem("hello","Ron")
+    }
+    function get_item(){
+        document.write(localStorage.getItem("hello"));
+    }
+    function clear_item(){
+        localStorage.clear("hello");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <style>
+      li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="question" id="question"></div>
+      <div class="answers">
+        <ul id="answerList"></ul>
+      </div>
+    </div>
+
+    <script>
+      const quizData = [
+        {
+          question: 'What is the capital of France?',
+          answers: ['Paris', 'London', 'Berlin', 'Rome'],
+          correctAnswer: 'Paris'
+        },
+        {
+          question: 'Which planet is known as the Red Planet?',
+          answers: ['Earth', 'Jupiter', 'Mars', 'Saturn'],
+          correctAnswer: 'Mars'
+        },
+        {
+          question: 'What is the largest ocean on Earth?',
+          answers: [
+            'Atlantic Ocean',
+            'Indian Ocean',
+            'Arctic Ocean',
+            'Pacific Ocean'
+          ],
+          correctAnswer: 'Pacific Ocean'
+        },
+        {
+          question: "Who wrote 'Romeo and Juliet'?",
+          answers: [
+            'William Shakespeare',
+            'Charles Dickens',
+            'Jane Austen',
+            'Mark Twain'
+          ],
+          correctAnswer: 'William Shakespeare'
+        },
+        {
+          question: 'What year did the Titanic sink?',
+          answers: ['1912', '1906', '1923', '1931'],
+          correctAnswer: '1912'
+        },
+        {
+          question: 'Which country is famous for the Taj Mahal?',
+          answers: ['India', 'China', 'Japan', 'Egypt'],
+          correctAnswer: 'India'
+        },
+        {
+          question: 'What is the currency of Japan?',
+          answers: ['Yen', 'Dollar', 'Euro', 'Pound'],
+          correctAnswer: 'Yen'
+        },
+        {
+          question: 'Who painted the Mona Lisa?',
+          answers: [
+            'Leonardo da Vinci',
+            'Pablo Picasso',
+            'Vincent van Gogh',
+            'Michelangelo'
+          ],
+          correctAnswer: 'Leonardo da Vinci'
+        },
+        {
+          question: 'What is the largest mammal on Earth?',
+          answers: ['Elephant', 'Blue whale', 'Giraffe', 'Lion'],
+          correctAnswer: 'Blue whale'
+        },
+        {
+          question: 'Which gas do plants absorb from the atmosphere?',
+          answers: ['Oxygen', 'Nitrogen', 'Carbon dioxide', 'Hydrogen'],
+          correctAnswer: 'Carbon dioxide'
+        },
+        {
+          question: 'What is the tallest mountain in the world?',
+          answers: ['Mount Everest', 'K2', 'Kangchenjunga', 'Lhotse'],
+          correctAnswer: 'Mount Everest'
+        },
+        {
+          question:
+            "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+          answers: ['Mars', 'Venus', 'Mercury', 'Jupiter'],
+          correctAnswer: 'Venus'
+        },
+        {
+          question: 'Who is credited with inventing the telephone?',
+          answers: [
+            'Alexander Graham Bell',
+            'Thomas Edison',
+            'Nikola Tesla',
+            'Albert Einstein'
+          ],
+          correctAnswer: 'Alexander Graham Bell'
+        },
+        {
+          question: 'Which city hosted the 2016 Summer Olympics?',
+          answers: ['Rio de Janeiro', 'Tokyo', 'London', 'Beijing'],
+          correctAnswer: 'Rio de Janeiro'
+        },
+        {
+          question: 'What is the chemical symbol for gold?',
+          answers: ['Au', 'Ag', 'Pt', 'Hg'],
+          correctAnswer: 'Au'
+        },
+        {
+          question: "Who is the author of 'To Kill a Mockingbird'?",
+          answers: [
+            'Harper Lee',
+            'F. Scott Fitzgerald',
+            'Ernest Hemingway',
+            'John Steinbeck'
+          ],
+          correctAnswer: 'Harper Lee'
+        },
+        {
+          question: 'What is the largest desert in the world?',
+          answers: [
+            'Sahara Desert',
+            'Gobi Desert',
+            'Arabian Desert',
+            'Antarctic Desert'
+          ],
+          correctAnswer: 'Sahara Desert'
+        },
+        {
+          question:
+            'Which famous scientist developed the theory of relativity?',
+          answers: [
+            'Albert Einstein',
+            'Isaac Newton',
+            'Galileo Galilei',
+            'Stephen Hawking'
+          ],
+          correctAnswer: 'Albert Einstein'
+        },
+        {
+          question: 'What is the main ingredient in guacamole?',
+          answers: ['Avocado', 'Tomato', 'Onion', 'Lime'],
+          correctAnswer: 'Avocado'
+        },
+        {
+          question: "Which animal is known as the 'King of the Jungle'?",
+          answers: ['Lion', 'Tiger', 'Leopard', 'Elephant'],
+          correctAnswer: 'Lion'
+        }
+      ]
+
+      let currentQuestionIndex = localStorage.getItem('questionIndex') || 0
+      let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || []
+
+      function displayQuestion() {
+        const questionElement = document.getElementById('question')
+        const answerListElement = document.getElementById('answerList')
+        questionElement.textContent = ''
+        answerListElement.innerHTML = ''
+        const currentQuestion = quizData[currentQuestionIndex]
+        questionElement.textContent = currentQuestion.question
+        currentQuestion.answers.forEach(answer => {
+          const answerItem = document.createElement('li')
+          answerItem.textContent = answer
+          answerItem.className = 'answer'
+          answerItem.setAttribute('onclick', 'submitAnswer(this)')
+          answerListElement.appendChild(answerItem)
+        })
+      }
+
+      function submitAnswer(selectedAnswer) {
+        const userAnswer = selectedAnswer.textContent
+        userAnswers.push(userAnswer)
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+        currentQuestionIndex++
+        localStorage.setItem('questionIndex', currentQuestionIndex)
+        if (currentQuestionIndex < quizData.length) {
+          displayQuestion()
+        } else {
+          finishQuiz()
+        }
+      }
+
+      function finishQuiz() {
+        let rightAnswered = 0
+        if (userAnswers.length !== quizData.length) {
+          console.error('Error: User answers do not match quiz data.')
+          return
+        }
+        for (let i = 0; i < quizData.length; i++) {
+          if (quizData[i].correctAnswer === userAnswers[i]) {
+            rightAnswered++
+          }
+        }
+        let displayEndMessage = document.createElement('div')
+        displayEndMessage.textContent = `Quiz completed! You answered correctly on: ${rightAnswered} out of ${quizData.length} questions.`
+        document.body.appendChild(displayEndMessage)
+        let playAgainButton = document.createElement('button')
+        playAgainButton.textContent = 'Play Again'
+        playAgainButton.onclick = playAgain
+        document.body.appendChild(playAgainButton)
+      }
+      function playAgain() {
+        localStorage.removeItem('questionIndex')
+        localStorage.removeItem('userAnswers')
+        location.reload()
+      }
+      displayQuestion()
+    </script>
+  </body>
+</html>

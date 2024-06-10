@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="textbox">
+        <button class="clear" type="reset" id="reset" onclick="clearDisplay()">
+          CE
+        </button>
+        <input type="text" id="display" name="display" readonly />
+        
+      </div>
+      <div class="operation">
+        <button class="oper" type="submit" id="sum" onclick="setOperator('+')">
+          +
+        </button>
+        <button class="oper" type="submit" id="sub" onclick="setOperator('-')">
+          -
+        </button>
+        <button class="oper" type="submit" id="mul" onclick="setOperator('*')">
+          X
+        </button>
+        <button
+          class="oper"
+          type="submit"
+          id="divide"
+          onclick="setOperator('/')"
+        >
+          /
+        </button>
+      </div>
+      <div class="numbers">
+        <button class="btn" id="num1" onclick="appendToDisplay('7')">7</button>
+        <button class="btn" id="num2" onclick="appendToDisplay('8')">8</button>
+        <button class="btn" id="num3" onclick="appendToDisplay('9')">9</button>
+        <button class="btn" id="num4" onclick="appendToDisplay('4')">4</button>
+        <button class="btn" id="num5" onclick="appendToDisplay('5')">5</button>
+        <button class="btn" id="num6" onclick="appendToDisplay('6')">6</button>
+        <button class="btn" id="num7" onclick="appendToDisplay('1')">1</button>
+        <button class="btn" id="num8" onclick="appendToDisplay('2')">2</button>
+        <button class="btn" id="num9" onclick="appendToDisplay('3')">3</button>
+        <button class="btn" id="num0" onclick="appendToDisplay('0')">0</button>
+        <button class="btn" id="dot" onclick="appendToDisplay('.')">.</button>
+        <button class="oper" id="equal" onclick="calculate()">=</button>
+      </div>
+    </div>
+    <script src="func.js"></script>
+  </body>
+</html>

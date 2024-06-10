@@ -1,0 +1,23 @@
+.fir{
+    background-color: red;
+}
+.sec{
+    background-color: blue;
+    
+    
+}
+.thir{
+    background-color: blueviolet;
+}
+p {
+    font-style: italic;
+}
+.sec p{
+    padding: 16px;
+    
+    border: 5px solid  black;
+}
+.sec,.fir {
+    border: 10px solid green;
+    margin-top: 15px;
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+        .grid {
+            background-color: rgb(60, 60, 60);
+            display: grid;
+            gap: 2rem;
+            margin-top: 1rem;
+            margin-inline: 4rem;
+            padding: 1rem;
+        }
+
+        .card {
+            display: grid;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .grid-1 {
+            display: grid;
+
+        }
+
+        .grid-1>:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .grid-1>:nth-child(2) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .grid>:nth-child(3) {
+            grid-column-start: span 2;
+        }
+
+
+
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+        }
+
+        .grid-2>:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .grid-2>:nth-child(2) {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        .grid-2>:nth-child(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .grid-2>:nth-child(5) {
+            grid-column-start: span 2;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+        }
+
+        .grid-3>:nth-child(1) {
+            grid-row-start: span 2;
+        }
+
+        .grid-3>:nth-child(2) {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        .grid-3>:nth-child(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .grid-3>:nth-child(4) {
+            grid-row-start: span 2;
+            grid-column-start: 3;
+            grid-column-end: 4;
+
+        }
+
+        .grid-3>:nth-child(5) {
+            grid-column-start: span 2;
+        }
+
+
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+        }
+
+        .grid-4>:nth-child(1) {
+            grid-row-start: span 2;
+            grid-column-start: span 2;
+        }
+
+        .grid-4>:nth-child(2) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+
+        .grid-4>:nth-child(3) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+
+        .grid-4>:nth-child(4) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+
+        }
+
+        .grid-4>:nth-child(5) {
+            grid-column-start: 2;
+        }
+
+
+
+        .grid-5 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        }
+
+        .grid-5>:nth-child(1) {
+            grid-row-start: span 2;
+    
+        }
+
+        .grid-5>:nth-child(2) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .grid-5>:nth-child(3) {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 1;
+        }
+
+        .grid-5>:nth-child(4) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+
+        }
+
+        .grid-5>:nth-child(5) {
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid grid-5">
+        <div class="card">
+            <div>
+                <h4>Card 1</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quas!
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h4>Card 2</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quas!
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h4>Card 3</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quas!
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h4>Card 4</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quas!
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h4>Card 5</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quas!
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

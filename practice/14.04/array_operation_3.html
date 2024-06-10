@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function bookUpdate(bookName, bookArray) {
+        for (let i = 0; i < bookArray.length; i++) {
+          if (bookArray[i].name === bookName) {
+            newPages = prompt('Update the number of pages');
+            bookArray[i].pages = newPages;
+            return bookArray[i]
+          }
+        }
+        return 'Book not found'
+      }
+
+      console.log(
+        bookUpdate('book2', [
+          { name: 'book1', pages: 200 },
+          { name: 'book2', pages: 250 },
+          { name: 'book3', pages: 300 },
+          { name: 'book4', pages: 345 }
+        ])
+      )
+    </script>
+  </body>
+</html>
