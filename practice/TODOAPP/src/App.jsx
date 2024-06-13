@@ -58,8 +58,8 @@ function TodoApp() {
 
       setTodos([...todos, newTodo]);
 
-      inputRef.current.value = ''; // Clear the input field
-      inputRef.current.focus(); // Focus the input field
+      inputRef.current.value = ''; 
+      inputRef.current.focus(); 
     } catch (error) {
       console.error('Error adding new to-do:', error);
     }
@@ -91,7 +91,6 @@ function TodoApp() {
       .catch(error => console.error('There was a problem with the fetch operation:', error));
   };
 
-  // Derived state for filtered todos
   const filteredTodos = todos.filter(todo => {
     const matchesTitle = todo.title.toLowerCase().includes(filterTitle.toLowerCase());
     const matchesCompleted = !filterCompleted || todo.isComplete;
