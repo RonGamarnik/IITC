@@ -1,29 +1,68 @@
-import React, { useState } from 'react';
-const initialTodos = [{ id: '1', title: 'Learn React', isComplete: false },
-{ id: '2', title: 'Build a Todo App', isComplete: false },
-{ id: '3', title: 'Read JavaScript Documentation', isComplete: true },
-{ id: '4', title: 'Write Unit Tests', isComplete: false },
-{ id: '5', title: 'Implement Context', isComplete: true },
-{ id: '6', title: 'Create Portfolio Website', isComplete: false },
-{ id: '7', title: 'Learn TypeScript', isComplete: false },
-{ id: '8', title: 'Refactor Codebase', isComplete: true },
-{ id: '9', title: 'Optimize Performance', isComplete: false },
-{ id: '10', title: 'Deploy to Production', isComplete: true }
-]
-function TodoApp() {
-  const [todos, setTodos] = useState(initialTodos);
-  const [newTodoTitle, setNewTodoTitle] = useState('');
+import React, { useEffect, useState } from 'react';
+import List from './components/TodoList';
+import Statistics from './components/TodoStatistics';
+import Form from './components/TodoForm';
+import Filter from './components/Filter';
 
-  const addTodo = (event) => {
+async function getTodosApi() {
+  try {
+    const response = await fetch("http://localhost:8001/todos");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching todos:", error);
+    return [];
+  }
+}
+
+function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  const [filterTitle, setFilterTitle] = useState('');
+  const [filterCompleted, setFilterCompleted] = useState(false);
+
+  useEffect(() => {
+    async function fetchTodos() {
+      const initialTodos = await getTodosApi();
+      setTodos(initialTodos);
+    }
+    fetchTodos();
+  }, []);
+
+  const addTodo = async (event, inputRef) => {
     event.preventDefault();
-    if (newTodoTitle.trim() === '') return;
+
+    const newTodoTitle = inputRef.current.value.trim();
+    if (newTodoTitle === '') return;
+
     const newTodo = {
       id: Date.now(),
       title: newTodoTitle,
       isComplete: false,
     };
-    setTodos([...todos, newTodo]);
-    setNewTodoTitle('');
+
+    try {
+      const response = await fetch('http://localhost:8001/todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTodo),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add new to-do');
+      }
+
+      setTodos([...todos, newTodo]);
+
+      inputRef.current.value = ''; // Clear the input field
+      inputRef.current.focus(); // Focus the input field
+    } catch (error) {
+      console.error('Error adding new to-do:', error);
+    }
   };
 
   const toggleTodoComplete = (id) => {
@@ -36,41 +75,52 @@ function TodoApp() {
 
   const removeTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+
+    fetch(`http://localhost:8001/todos/${id}`, { method: 'DELETE' })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(() => {
+        getTodosApi();
+        fetchTodos();
+        console.log('Delete successful');
+      })
+      .catch(error => console.error('There was a problem with the fetch operation:', error));
   };
 
-  const completedTodos = todos.filter((todo) => todo.isComplete).length;
-  const activeTodos = todos.length - completedTodos;
+  // Derived state for filtered todos
+  const filteredTodos = todos.filter(todo => {
+    const matchesTitle = todo.title.toLowerCase().includes(filterTitle.toLowerCase());
+    const matchesCompleted = !filterCompleted || todo.isComplete;
+    return matchesTitle && matchesCompleted;
+  });
+
+  const completedTodos = filteredTodos.filter((todo) => todo.isComplete).length;
+  const activeTodos = filteredTodos.length - completedTodos;
 
   return (
     <div className="container">
       <h1>Todo List</h1>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          value={newTodoTitle}
-          onChange={(ev) => setNewTodoTitle(ev.target.value)}
-          placeholder="Enter a new todo"
-        />
-        <button type="submit">Add</button>
-      </form>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id} className="todoItem">
-            <p className={todo.isComplete ? 'completedTodo' : ''}>{todo.title}</p>
-            <input
-              type="checkbox"
-              checked={todo.isComplete}
-              onChange={() => toggleTodoComplete(todo.id)}
-            />
-            <button onClick={() => removeTodo(todo.id)}>Remove todo</button>
-          </li>
-        ))}
-      </ul>
-      <p>Total todos: {todos.length}</p>
-      <p>Active todos: {activeTodos}</p>
-      <p>Completed todos: {completedTodos}</p>
-      <label>Todo progress: </label>
-      <progress value={completedTodos} max={todos.length}></progress>
+      <Form addTodo={addTodo} />
+      <Filter
+        filterTitle={filterTitle}
+        setFilterTitle={setFilterTitle}
+        filterCompleted={filterCompleted}
+        setFilterCompleted={setFilterCompleted}
+      />
+      <List
+        todos={filteredTodos}
+        toggleTodoComplete={toggleTodoComplete}
+        removeTodo={removeTodo}
+      />
+      <Statistics
+        todos={filteredTodos}
+        activeTodos={activeTodos}
+        completedTodos={completedTodos}
+      />
     </div>
   );
 }
