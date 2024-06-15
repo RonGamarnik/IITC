@@ -3,6 +3,7 @@ import List from './components/TodoList';
 import Statistics from './components/TodoStatistics';
 import Form from './components/TodoForm';
 import Filter from './components/Filter';
+import axios from 'axios';
 
 async function getTodosApi() {
   try {
@@ -38,7 +39,6 @@ function TodoApp() {
     if (newTodoTitle === '') return;
 
     const newTodo = {
-      id: Date.now(),
       title: newTodoTitle,
       isComplete: false,
     };
@@ -56,39 +56,38 @@ function TodoApp() {
         throw new Error('Failed to add new to-do');
       }
 
-      setTodos([...todos, newTodo]);
+      const createdTodo = await response.json();
+      setTodos([...todos, createdTodo]);
 
-      inputRef.current.value = ''; 
-      inputRef.current.focus(); 
+      inputRef.current.value = '';
+      inputRef.current.focus();
     } catch (error) {
       console.error('Error adding new to-do:', error);
     }
   };
 
-  const toggleTodoComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isComplete: !todo.isComplete } : todo
-      )
-    );
+  const toggleTodoComplete = async (id) => {
+    const todo = todos.find(todo => todo.id === id);
+    const updatedTodo = { ...todo, isComplete: !todo.isComplete };
+
+    try {
+      await axios.patch(`http://localhost:8001/todos/${id}`, { isComplete: updatedTodo.isComplete });
+      setTodos(todos.map(todo =>
+        todo.id === id ? updatedTodo : todo
+      ));
+    } catch (error) {
+      console.error("Error updating todo", error);
+    }
   };
 
-  const removeTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-
-    fetch(`http://localhost:8001/todos/${id}`, { method: 'DELETE' })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(() => {
-        getTodosApi();
-        fetchTodos();
-        console.log('Delete successful');
-      })
-      .catch(error => console.error('There was a problem with the fetch operation:', error));
+  const removeTodo = async (id) => {
+    console.log(`Attempting to delete todo with ID: ${id}`);
+    try {
+      await axios.delete(`http://localhost:8001/todos/${id}`);
+      setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+    } catch (error) {
+      console.error("Error in delete", error);
+    }
   };
 
   const filteredTodos = todos.filter(todo => {

@@ -21,7 +21,7 @@ function Filter({ filterTitle, setFilterTitle, filterCompleted, setFilterComplet
     };
 
     return (
-        <div>
+        <div className='searchBar'>
             <input
                 type="text"
                 placeholder="Filter by title"

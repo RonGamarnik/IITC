@@ -26,19 +26,9 @@
       "isComplete": false
     },
     {
-      "id": "7",
-      "title": "Learn TypeScript",
-      "isComplete": false
-    },
-    {
       "id": "8",
       "title": "Refactor Codebase",
       "isComplete": true
-    },
-    {
-      "id": "9",
-      "title": "Optimize Performance",
-      "isComplete": false
     },
     {
       "id": "10",
@@ -46,13 +36,8 @@
       "isComplete": true
     },
     {
-      "id": 1718183470603,
+      "id": "1718183470603",
       "title": "eat",
-      "isComplete": false
-    },
-    {
-      "id": 1718184046770,
-      "title": "xxc",
       "isComplete": false
     }
   ]

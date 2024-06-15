@@ -1,0 +1,65 @@
+*{
+  font-family: "WorkSans";
+  font-size: 16px;
+}
+h1{
+  font-weight: 700;
+  font-size: 3em;
+}
+h2{
+  font-weight: 600;
+}
+.content-paragraph{
+  font-weight: 200;
+  color: hsl(273, 7%, 75%);
+}
+
+.header{
+  background-image: url("..\public\background-pattern-desktop.svg");
+  grid-column: span 3;
+  grid-row: 1/1;
+}
+.main{
+  background-color: hsl(275, 100%, 97%);
+  grid-row: 2/4;
+  grid-column: span 3;
+}
+.main-card{
+  position: absolute;
+  padding-inline: 1em;
+  top: 6em;
+  left: 25em;
+  background-color: white;
+  width: 35%;
+  border-radius: 25px;
+}
+.title{
+  display: flex;
+  transition:2s ;
+  flex-direction: column;
+  }
+  
+  .item{
+  border-bottom: 0.1px solid #8c69913a;
+  transition: 2s;
+}
+.item:last-of-type{
+  border: none;
+}
+.main-card-header{
+  display: flex;
+}
+img{
+  cursor: pointer;
+}
+.title h2{
+  cursor: pointer;
+
+}
+.main-card-header img{
+  cursor: default;
+}
+.content{
+ justify-content: space-between;
+  display: flex;
+}

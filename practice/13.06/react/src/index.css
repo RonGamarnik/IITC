@@ -1,0 +1,17 @@
+*{
+  font-family: "WorkSans";
+}
+#root {
+  margin-top: 0;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1/2;
+  grid-template-rows: 1/2;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
