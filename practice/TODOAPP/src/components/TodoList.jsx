@@ -3,9 +3,8 @@ import Item from "./TodoItem";
 
 const List = ({ todos, toggleTodoComplete, removeTodo }) => {
     return (
-        <ul>
+        <ul className="list">
             {todos.map(todo => {
-                console.log(`Rendering todo with id: ${todo.id}`);
                 return (
                     <Item
                         key={todo.id}
