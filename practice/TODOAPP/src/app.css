@@ -15,15 +15,29 @@ body {
 .app-bar {
   overflow: hidden;
   z-index: 99999;
-  background-color: rgba(12, 13, 72, 0.774) !important;
+  background-color: #0c0d48c5 !important;
 }
-.container,.details-card {
+.container,
+.details-card {
   background-color: #cfcfbc4f;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 500px;
   width: 100%;
+}
+
+.dialog {
+  background-color: #3d393941 !important;
+}
+.dialog-content{
+  color: #333!important;
+}
+.side-bar {
+  position: sticky;
+  top: 10em;
+  left: 0;
+  width: 10%;
 }
 
 /* Heading */
@@ -87,7 +101,7 @@ ul {
   margin: 0;
   background-color: #333;
 }
-.list{
+.list {
   background-color: #b7b7a74f;
 }
 .todoItem {

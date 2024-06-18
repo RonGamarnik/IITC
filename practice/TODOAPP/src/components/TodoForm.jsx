@@ -1,3 +1,5 @@
+// src/components/TodoForm.jsx
+
 import React, { useRef, useState } from 'react';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import Box from '@mui/material/Box';
@@ -6,9 +8,15 @@ import Tooltip from '@mui/material/Tooltip';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import MultipleSelectCheckmarks from './Chip'; 
+import axios from 'axios';
+import MultipleSelectCheckmarks from './Chip';
 
-function Form() {
+function Form({ setLoading, onClose }) { // Accept onClose as a prop
+    const [todos, setTodos] = useState([]);
+    const inputRef = useRef(null);
+    const [open, setOpen] = useState(false);
+    const [selectedTags, setSelectedTags] = useState([]);
+
     const addTodo = async (event, inputRef, selectedTags) => {
         event.preventDefault();
 
@@ -18,7 +26,7 @@ function Form() {
         const newTodo = {
             title: newTodoTitle,
             isComplete: false,
-            label: selectedTags
+            label: selectedTags,
         };
 
         try {
@@ -27,6 +35,7 @@ function Form() {
             setTodos([...todos, response.data]);
             inputRef.current.value = '';
             inputRef.current.focus();
+            onClose(); // Close the modal
         } catch (error) {
             console.error('Error adding new to-do:', error);
         } finally {
@@ -35,29 +44,25 @@ function Form() {
     };
 
     const toggleTodoComplete = async (id) => {
-        const todo = todos.find(todo => todo.id === id);
+        const todo = todos.find((todo) => todo.id === id);
         const updatedTodo = { ...todo, isComplete: !todo.isComplete };
 
         try {
             setLoading(true);
             await axios.patch(`http://localhost:8001/todos/${id}`, { isComplete: updatedTodo.isComplete });
-            setTodos(todos.map(todo => todo.id === id ? updatedTodo : todo));
+            setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
         } catch (error) {
-            console.error("Error updating todo", error);
+            console.error('Error updating todo', error);
         } finally {
             setLoading(false);
         }
     };
 
-    const inputRef = useRef(null);
-    const [open, setOpen] = useState(false);
-    const [selectedTags, setSelectedTags] = useState([]);
-
     const handleClick = () => {
         setOpen(true);
     };
 
-    const handleClose = (event, reason) => {
+    const handleCloseSnackbar = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
@@ -87,7 +92,7 @@ function Form() {
 
     const action = (
         <React.Fragment>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
                 <CloseIcon fontSize="small" />
             </IconButton>
         </React.Fragment>
@@ -98,7 +103,7 @@ function Form() {
             <Box sx={{ width: 500, maxWidth: '100%' }}>
                 <TextField fullWidth inputRef={inputRef} label="Enter a new todo" />
             </Box>
-            <MultipleSelectCheckmarks selectedTags={selectedTags} setSelectedTags={setSelectedTags} required/>
+            <MultipleSelectCheckmarks selectedTags={selectedTags} setSelectedTags={setSelectedTags} required />
             <Tooltip title="Add new todo">
                 <button id='submit-button' type="submit">
                     <AddCommentIcon sx={{ color: 'black' }} />
@@ -107,7 +112,7 @@ function Form() {
             <Snackbar
                 open={open}
                 autoHideDuration={3000}
-                onClose={handleClose}
+                onClose={handleCloseSnackbar}
                 message="Todo has been added"
                 action={action}
             />

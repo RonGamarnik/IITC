@@ -98,22 +98,23 @@ function Item({ todo, toggleTodoComplete, removeTodo }) {
                     action={actionSnackbar}
                 />
                 <Dialog
+                    className="dialog"
                     open={openDialog}
                     onClose={handleCloseDialog}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">{"Delete Todo?"}</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
+                    <DialogTitle className="dialog-content" id="alert-dialog-title" >{"Delete Todo?"}</DialogTitle>
+                    <DialogContent className="dialog-content">
+                        <DialogContentText className="dialog-content" id="alert-dialog-description">
                             Are you sure you want to delete this todo?
                         </DialogContentText>
                     </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleCloseDialog} color="primary">
+                    <DialogActions className="dialog-content">
+                        <Button onClick={handleCloseDialog} className="dialog-content" >
                             Cancel
                         </Button>
-                        <Button onClick={handleDelete} color="primary" autoFocus>
+                        <Button onClick={handleDelete} className="dialog-content"  autoFocus>
                             Delete
                         </Button>
                     </DialogActions>

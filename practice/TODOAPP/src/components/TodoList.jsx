@@ -1,8 +1,10 @@
 import React from "react";
 import Item from "./TodoItem";
+import TodoLayout from "./TodoLayout";
 
 const List = ({ todos, toggleTodoComplete, removeTodo }) => {
     return (
+        
         <ul className="list">
             {todos.map(todo => {
                 return (
@@ -14,7 +16,8 @@ const List = ({ todos, toggleTodoComplete, removeTodo }) => {
                     />
                 );
             })}
-        </ul>
+            </ul>
+     
     );
 };
 

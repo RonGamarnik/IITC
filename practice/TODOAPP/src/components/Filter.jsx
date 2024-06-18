@@ -3,24 +3,48 @@ import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import BasicTabs from './Tabs';
 
-function Filter({ filterTitle, setFilterTitle, filterCompleted, setFilterCompleted, todos, selectedTab, setSelectedTab }) {
+function Filter({ filterTitle, filterCompleted, todos, selectedTab, setSearchParams }) {
     const [title, setTitle] = useState(filterTitle);
     const [completed, setCompleted] = useState(filterCompleted);
 
     useEffect(() => {
         const handler = setTimeout(() => {
-            setFilterTitle(title);
+            setSearchParams(params => {
+                if (title) {
+                    params.set('title', title);
+                } else {
+                    params.delete('title');
+                }
+                return params;
+            });
         }, 300);
 
         return () => {
             clearTimeout(handler);
         };
-    }, [title, setFilterTitle]);
+    }, [title, setSearchParams]);
+
+    useEffect(() => {
+        setSearchParams(params => {
+            if (completed) {
+                params.set('completed', completed);
+            } else {
+                params.delete('completed');
+            }
+            return params;
+        });
+    }, [completed, setSearchParams]);
 
     const handleCompletedChange = (event) => {
         const { checked } = event.target;
         setCompleted(checked);
-        setFilterCompleted(checked);
+    };
+
+    const handleTabChange = (event, newValue) => {
+        setSearchParams(params => {
+            params.set('tab', newValue);
+            return params;
+        });
     };
 
     const allTodos = todos;
@@ -43,7 +67,7 @@ function Filter({ filterTitle, setFilterTitle, filterCompleted, setFilterComplet
                 activeTodos={activeTodos}
                 completedTodos={completedTodos}
                 selectedTab={selectedTab}
-                setSelectedTab={setSelectedTab}
+                setSelectedTab={handleTabChange}
             />
         </div>
     );

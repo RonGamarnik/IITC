@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
-const pages = ['Home','Todo','Create todo', 'Details'];
+const pages = ['Home', 'Todo'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -37,7 +37,7 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar className='app-bar' position="static">
+        <AppBar position="static" className='app-bar'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -45,14 +45,14 @@ function ResponsiveAppBar() {
                         variant="h6"
                         noWrap
                         component={Link}
-                        to="Todo"
+                        to="/Home"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: '#333',
                             textDecoration: 'none',
                         }}
                     >
@@ -67,7 +67,6 @@ function ResponsiveAppBar() {
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
                             color="inherit"
-
                         >
                             <MenuIcon />
                         </IconButton>
@@ -90,7 +89,7 @@ function ResponsiveAppBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu} component={Link} to={page}>
+                                <MenuItem key={page} onClick={handleCloseNavMenu} component={Link} to={`/${page}`}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -100,8 +99,8 @@ function ResponsiveAppBar() {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                        component={Link}
+                        to="/Home"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -109,7 +108,7 @@ function ResponsiveAppBar() {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: '#333',
                             textDecoration: 'none',
                         }}
                     >
@@ -119,6 +118,8 @@ function ResponsiveAppBar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
+                                component={Link}
+                                to={`/${page}`}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
@@ -161,4 +162,5 @@ function ResponsiveAppBar() {
         </AppBar>
     );
 }
+
 export default ResponsiveAppBar;

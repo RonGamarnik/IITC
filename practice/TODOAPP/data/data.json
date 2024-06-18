@@ -23,7 +23,7 @@
     {
       "id": "9a28",
       "title": "ron",
-      "isComplete": false,
+      "isComplete": true,
       "label": [
         "Work",
         "School"
@@ -54,20 +54,20 @@
       ]
     },
     {
-      "id": "f322",
-      "title": "Finish Task 16",
-      "isComplete": false,
-      "label": [
-        "School",
-        "Education"
-      ]
-    },
-    {
       "id": "a56b",
       "title": "sdf",
       "isComplete": false,
       "label": [
         "fds"
+      ]
+    },
+    {
+      "id": "1891",
+      "title": "vbn",
+      "isComplete": true,
+      "label": [
+        "Work",
+        "School"
       ]
     }
   ]

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import List from '../components/TodoList';
-import Form from '../components/TodoForm';
 import Filter from '../components/Filter';
 import axios from 'axios';
 import Skeleton from '@mui/material/Skeleton';
-import ResponsiveAppBar from '../components/NavBar';
+import Button from '@mui/material/Button';
 import Statistics from '../components/TodoStatistics';
+import Sidebar from '../components/Sidebar';
 
 async function getTodosApi() {
     try {
@@ -21,27 +22,31 @@ async function getTodosApi() {
     }
 }
 
-function HomePage() {
+function TodoPage() {
     const [todos, setTodos] = useState([]);
-    const [filterTitle, setFilterTitle] = useState('');
-    const [filterCompleted, setFilterCompleted] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [selectedTab, setSelectedTab] = useState(0); // State for managing selected tab
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const filterTitle = searchParams.get('title') || '';
+    const filterCompleted = searchParams.get('completed') === 'true';
+    const selectedTab = parseInt(searchParams.get('tab')) || 0;
 
     useEffect(() => {
         async function fetchTodos() {
-            setLoading(true); // Start loading indicator
+            setLoading(true);
             try {
                 const initialTodos = await getTodosApi();
                 setTodos(initialTodos);
             } catch (error) {
                 console.error('Error fetching todos:', error);
             } finally {
-                setLoading(false); // Stop loading indicator
+                setLoading(false);
             }
         }
         fetchTodos();
-    }, []);
+    }, [location.pathname]);
 
     const addTodo = async (event, inputRef, selectedTags) => {
         event.preventDefault();
@@ -56,7 +61,7 @@ function HomePage() {
         };
 
         try {
-            setLoading(true); // Start loading indicator
+            setLoading(true);
             const response = await axios.post('http://localhost:8001/todos', newTodo);
             setTodos([...todos, response.data]);
             inputRef.current.value = '';
@@ -64,7 +69,7 @@ function HomePage() {
         } catch (error) {
             console.error('Error adding new to-do:', error);
         } finally {
-            setLoading(false); // Stop loading indicator
+            setLoading(false);
         }
     };
 
@@ -86,17 +91,16 @@ function HomePage() {
     const removeTodo = async (id) => {
         console.log(`Attempting to delete todo with ID: ${id}`);
         try {
-            setLoading(true); // Start loading indicator
+            setLoading(true);
             await axios.delete(`http://localhost:8001/todos/${id}`);
             setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
         } catch (error) {
             console.error("Error deleting todo", error);
         } finally {
-            setLoading(false); // Stop loading indicator
+            setLoading(false);
         }
     };
 
-    // Filter todos based on the selected tab
     const filteredTodos = todos.filter(todo => {
         const matchesTitle = todo.title.toLowerCase().includes(filterTitle.toLowerCase());
         const matchesCompleted = !filterCompleted || todo.isComplete;
@@ -104,9 +108,9 @@ function HomePage() {
     });
 
     const todosToDisplay = filteredTodos.filter(todo => {
-        if (selectedTab === 0) return true; // All todos
-        if (selectedTab === 1) return !todo.isComplete; // Active todos
-        if (selectedTab === 2) return todo.isComplete; // Completed todos
+        if (selectedTab === 0) return true;
+        if (selectedTab === 1) return !todo.isComplete;
+        if (selectedTab === 2) return todo.isComplete;
         return true;
     });
 
@@ -115,18 +119,16 @@ function HomePage() {
 
     return (
         <>
+            <Sidebar />
             <div className="container">
-
                 <h1>Todo List</h1>
-                <Form addTodo={addTodo} />
+                <Button variant="contained" sx={{ backgroundColor:"#0c0d48c5!important", marginBlock:"1em"}} onClick={() => navigate('/todo/create')}>Create Todo</Button>
                 <Filter
-                    filterTitle={filterTitle}
-                    setFilterTitle={setFilterTitle}
-                    filterCompleted={filterCompleted}
-                    setFilterCompleted={setFilterCompleted}
-                    todos={todos}
-                    selectedTab={selectedTab} // Pass selectedTab to Filter
-                    setSelectedTab={setSelectedTab} // Pass setSelectedTab to Filter
+                filterTitle={filterTitle}
+                filterCompleted={filterCompleted}
+                todos={todos}
+                selectedTab={selectedTab}
+                setSearchParams={setSearchParams}
                 />
                 {loading ? (
                     <div style={{ width: 300 }}>
@@ -136,7 +138,7 @@ function HomePage() {
                     </div>
                 ) : (
                     <List
-                        todos={todosToDisplay} // Display todos based on selected tab
+                        todos={todosToDisplay}
                         toggleTodoComplete={toggleTodoComplete}
                         removeTodo={removeTodo}
                     />
@@ -147,8 +149,9 @@ function HomePage() {
                     completedTodos={completedTodos.length}
                 />
             </div>
+            <Outlet />
         </>
     );
 }
 
-export default HomePage;
+export default TodoPage;
