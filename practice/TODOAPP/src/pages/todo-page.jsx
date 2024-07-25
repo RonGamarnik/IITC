@@ -47,32 +47,7 @@ function TodoPage() {
         }
         fetchTodos();
     }, [location.pathname]);
-
-    const addTodo = async (event, inputRef, selectedTags) => {
-        event.preventDefault();
-
-        const newTodoTitle = inputRef.current.value.trim();
-        if (newTodoTitle === '') return;
-
-        const newTodo = {
-            title: newTodoTitle,
-            isComplete: false,
-            label: selectedTags
-        };
-
-        try {
-            setLoading(true);
-            const response = await axios.post('http://localhost:8001/todos', newTodo);
-            setTodos([...todos, response.data]);
-            inputRef.current.value = '';
-            inputRef.current.focus();
-        } catch (error) {
-            console.error('Error adding new to-do:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
+    
     const toggleTodoComplete = async (id) => {
         const todo = todos.find(todo => todo.id === id);
         const updatedTodo = { ...todo, isComplete: !todo.isComplete };

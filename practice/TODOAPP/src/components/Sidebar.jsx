@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     return (
-        <Box sx={{ width: 200, bgcolor: 'grey.200', height: '100vh', position: 'fixed', left: 0, top: 0, zIndex: 1000, padding: 2 }}>
+        <Box  sx={{ width: 200, bgcolor: '#333', height: '100vh', position: 'fixed', left: 0, top: 0, zIndex: 1000, padding: 2, alignItems:"center" }}>
             <nav>
                 <ul>
                     <li>
